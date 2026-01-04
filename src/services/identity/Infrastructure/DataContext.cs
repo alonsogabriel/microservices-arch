@@ -1,5 +1,5 @@
+using AppCommon.Repositories;
 using IdentityApi.Domain.Entities;
-using IdentityApi.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityApi.Infrastructure;

@@ -1,7 +1,7 @@
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace IdentityApi;
+namespace AppCommon.Jwt;
 
 public class JwtSettings
 {

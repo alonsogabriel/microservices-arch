@@ -1,4 +1,4 @@
-namespace IdentityApi.Domain.Repositories;
+namespace AppCommon.Repositories;
 
 public interface IDataContext
 {

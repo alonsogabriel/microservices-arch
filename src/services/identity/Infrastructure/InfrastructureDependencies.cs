@@ -1,3 +1,4 @@
+using AppCommon.Repositories;
 using IdentityApi.Domain.Repositories;
 using IdentityApi.Infrastructure.Repositories;
 using IdentityApi.Infrastructure.Seeds;
