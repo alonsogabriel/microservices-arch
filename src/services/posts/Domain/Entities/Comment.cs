@@ -1,9 +1,8 @@
-using Microsoft.AspNetCore.Http.HttpResults;
-
 namespace PostsApi.Domain.Entities;
 
 public class Comment
 {
+    public const int MaxContentLength = 1000;
     private Comment() {}
     public Comment(Guid authorId, Guid postId, Comment? replied, string content)
     {

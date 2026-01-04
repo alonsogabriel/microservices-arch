@@ -2,6 +2,7 @@ namespace PostsApi.Domain.Entities;
 
 public class Post
 {
+    public const int MaxDescriptionLength = 3000;
     private Post() {}
     public Post(Guid authorId, string description)
     {

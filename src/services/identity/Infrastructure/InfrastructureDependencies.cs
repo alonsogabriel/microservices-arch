@@ -15,7 +15,7 @@ public static class InfrastructureDependencies
             var connectionString = serviceProvider.GetRequiredService<IConfiguration>().GetConnectionString("IdentityDB");
             options.UseNpgsql(connectionString);
         });
-        services.AddScoped<IDataContext, DataContext>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUserRepository, UserRepository>();
     }
 

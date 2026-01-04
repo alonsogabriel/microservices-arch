@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
+using AppCommon.Exceptions;
 using IdentityApi.Domain.Entities;
-using IdentityApi.Domain.Exceptions;
 using IdentityApi.Domain.Repositories;
 
 namespace IdentityApi.Domain.Services;
