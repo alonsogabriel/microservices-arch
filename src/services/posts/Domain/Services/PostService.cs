@@ -1,5 +1,7 @@
 using AppCommon.Exceptions;
 using AppCommon.Repositories;
+using PostsApi.Application.Dto;
+using PostsApi.Application.Queries;
 using PostsApi.Domain.Entities;
 using PostsApi.Domain.Repositories;
 
@@ -8,11 +10,13 @@ namespace PostsApi.Domain.Services;
 public class PostService(
     IPostRepository postRepository,
     IPostLikeRepository postLikeRepository,
+    IPostQueries postQueries,
     IUnitOfWork unitOfWork
 )
 {
     private readonly IPostRepository _postRepository = postRepository;
     private readonly IPostLikeRepository _postLikeRepository = postLikeRepository;
+    private readonly IPostQueries _postQueries = postQueries;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     public async Task<Post> CreateAsync(Guid authorId, string description, CancellationToken cancellationToken = default)
     {
@@ -41,5 +45,11 @@ public class PostService(
         await _unitOfWork.CommitTransactionAsync(cancellationToken);
 
         return like;
+    }
+
+    public async Task<PostResponse> FindAsync(Guid postId, CancellationToken cancellationToken = default)
+    {
+        return await _postQueries.FindAsync(postId, cancellationToken)
+            ?? throw new NotFoundException("Post not found.");
     }
 }

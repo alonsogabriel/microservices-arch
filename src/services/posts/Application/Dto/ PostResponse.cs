@@ -2,27 +2,29 @@ using PostsApi.Domain.Entities;
 
 namespace PostsApi.Application.Dto;
 
-public record PostResponse(
-    Guid Id,
-    Guid AuthorId,
-    PostAuthor? Author,
-    string Description,
-    int LikesCount,
-    int CommentsCount,
-    DateTime CreatedAt,
-    DateTime? UpdatedAt)
+public class PostResponse
 {
+    public Guid Id { get; init; }
+    public Guid AuthorId { get; init; }
+    public PostAuthor? Author { get; init; }
+    public string Description { get; init; }
+    public int LikesCount { get; init; }
+    public int CommentsCount { get; init; }
+    public DateTime CreatedAt { get; init; }
+    public DateTime? UpdatedAt { get; init; }
     public static PostResponse From(Post post)
     {
-        return new PostResponse(
-            post.Id,
-            post.AuthorId,
-            null,
-            post.Description,
-            post.LikesCount,
-            post.CommentsCount,
-            post.CreatedAt,
-            post.UpdatedAt);
+        return new PostResponse
+        {
+            Id = post.Id,
+            AuthorId = post.AuthorId,
+            Author = null,
+            Description = post.Description,
+            LikesCount = post.LikesCount,
+            CommentsCount = post.CommentsCount,
+            CreatedAt = post.CreatedAt,
+            UpdatedAt = post.UpdatedAt
+        };
     }
 }
 
