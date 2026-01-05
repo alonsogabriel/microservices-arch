@@ -14,8 +14,8 @@ public class Post
     public Guid Id { get; private set; }
     public Guid AuthorId { get; private set; }
     public string Description { get; private set; }
-    public int LikesCount { get; private set; } // SQL trigger on update => LikesCount = current.LikesCount + 1
-    public int CommentsCount { get; private set; } // SQL trigger on update => same as likes
+    public int LikesCount { get; private set; }
+    public int CommentsCount { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
 
