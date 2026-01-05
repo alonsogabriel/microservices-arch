@@ -1,0 +1,25 @@
+{
+    "Routes": [
+        {
+            "UpstreamHttpMethod": ["Get", "Post"],
+            "UpstreamPathTemplate": "/identity/v1/{everything}",
+            "DownstreamPathTemplate": "/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                { "Host": "localhost", "Port": 5128 }
+            ]
+        },
+        {
+            "UpstreamHttpMethod": ["Get", "Post", "Put", "Delete", "Patch"],
+            "UpstreamPathTemplate": "/posts/v1/{everything}",
+            "DownstreamPathTemplate": "/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                { "Host": "localhost", "Port": 5076 }
+            ]
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "http://localhost:5012"
+    }
+}

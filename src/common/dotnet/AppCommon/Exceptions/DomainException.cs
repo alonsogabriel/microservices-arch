@@ -1,3 +1,3 @@
-namespace IdentityApi.Domain.Exceptions;
+namespace AppCommon.Exceptions;
 
 public class DomainException(string message) : Exception(message);

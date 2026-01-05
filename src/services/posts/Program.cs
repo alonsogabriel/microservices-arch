@@ -1,16 +1,14 @@
 using AppCommon.Jwt;
-using IdentityApi.Application.Services;
-using IdentityApi.Domain;
-using IdentityApi.Infrastructure;
+using PostsApi.Domain.Services;
+using PostsApi.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddOpenApi();
-DomainDependencies.AddAll(builder.Services);
-InfrastructureDependencies.AddAll(builder.Services);
-builder.Services.AddScoped<TokenService>();
-builder.Services.AddControllers();
 
+builder.Services.AddOpenApi();
+builder.Services.AddControllers();
 AppAuthentication.AddJwtAuthentication(builder);
+InfrastructureDependecies.AddAll(builder.Services);
+builder.Services.AddScoped<PostService>();
 
 var app = builder.Build();
 
@@ -21,7 +19,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapControllers();
 app.UseHttpsRedirection();
-
-await app.MigrateDatabaseAsync();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
